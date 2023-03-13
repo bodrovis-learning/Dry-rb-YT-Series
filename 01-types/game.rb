@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dry-struct'
 require 'dry-types'
 require 'time'
@@ -27,7 +29,7 @@ puts aragorn.inspect
 #   name: Types::Strict::String,
 #   age: Types::Strict::Integer.
 #     default(18).
-#     constructor { |v| 
+#     constructor { |v|
 #       v.nil? ? Dry::Types::Undefined : v
 #     }
 #   ).strict.with_key_transform(&:to_sym)
@@ -36,7 +38,7 @@ puts aragorn.inspect
 
 class Item < Dry::Struct
   attribute :owner, Character
-  attribute :description, Types::String.fallback('[EMPTY]'.freeze)
+  attribute :description, Types::String.fallback('[EMPTY]')
   attribute :inscription, Types::Strict::String.optional
   attribute :price, Types::Coercible::Float
   attribute :found_at, Types::JSON::Time.default { Time.now }
@@ -53,7 +55,7 @@ end
 
 narsil = Item.new owner: aragorn,
                   description: 10,
-                  inscription: "For the Dunedain!",
+                  inscription: 'For the Dunedain!',
                   price: '10000.50',
                   found_at: '1567-11-26 12:00:00',
                   locked: true,
@@ -65,14 +67,14 @@ narsil = Item.new owner: aragorn,
                   tags: %i[sword dunedain magical]
 
 ring = Item.new owner: bilbo,
-                description: "The One Ring",
+                description: 'The One Ring',
                 inscription: nil,
                 price: 100_000_00.50,
                 locked: 'true',
                 weight: 100,
                 id: 'id-345',
                 quality: :unique,
-                prev_owners: {"Sauron" => 500, "Gollum" => 1000},
+                prev_owners: { 'Sauron' => 500, 'Gollum' => 1000 },
                 tags: %w[ring golden]
 
 puts '=' * 50

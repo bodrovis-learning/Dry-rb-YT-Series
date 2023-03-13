@@ -1,0 +1,16 @@
+ru:
+  dry_validation:
+    errors:
+      str?: "не является строкой"
+      int?: "не является числом"
+      rules:
+        email:
+          invalid_format: "имеет неверный формат"
+        age:
+          key?: "отсутствует"
+        name:
+          key?: "отсутствует"
+        first_page_appear:
+          invalid: "имеет некорректное значение"
+        last_page_appear:
+          invalid: "имеет некорректное значение"
