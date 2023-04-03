@@ -8,6 +8,8 @@ loader = Zeitwerk::Loader.for_gem
 loader.setup
 
 module Lotr
+  Dry::Validation.load_extensions(:monads)
+      
   class << self
     def start
       @engine = Engine.new
